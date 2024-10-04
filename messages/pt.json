@@ -1,0 +1,11 @@
+{
+  "LocaleLayout": {
+    "title": "React i18n",
+    "subtitle": "Internacionalização com React"
+  },
+  "Home": {
+    "title": "Bem-vindo ao React",
+    "subtitle": "Uma biblioteca JavaScript para criar interfaces de usuário",
+    "button": "Saiba mais"
+  }
+}
