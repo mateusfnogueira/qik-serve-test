@@ -1,5 +1,5 @@
 import { NextIntlClientProvider } from "next-intl";
-import { notFound } from "next/navigation";
+import { getMessages, unstable_setRequestLocale } from "next-intl/server";
 
 interface Props {
   children: React.ReactNode;
@@ -10,13 +10,12 @@ export const InstallProviders: React.FC<Props> = async ({
   children,
   locale,
 }) => {
-  let messages;
-  try {
-    messages = (await import(`../../../messages/${locale}.json`)).default;
-  } catch (error) {
-    notFound();
-  }
+  unstable_setRequestLocale(locale);
+
+  const messages = await getMessages();
   return (
-    <NextIntlClientProvider locale={locale}>{children}</NextIntlClientProvider>
+    <NextIntlClientProvider locale={locale} messages={messages}>
+      {children}
+    </NextIntlClientProvider>
   );
 };

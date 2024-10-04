@@ -1,10 +1,6 @@
-import { NextIntlClientProvider } from "next-intl";
-import {
-  getMessages,
-  getTranslations,
-  unstable_setRequestLocale,
-} from "next-intl/server";
+import { getTranslations } from "next-intl/server";
 import { routing } from "@/i18n/routing";
+import { InstallProviders } from "../_shared/provider/install-providers";
 
 type Props = {
   children: React.ReactNode;
@@ -30,16 +26,10 @@ export default async function LocaleLayout({
   children,
   params: { locale },
 }: Props) {
-  unstable_setRequestLocale(locale);
-
-  const messages = await getMessages();
-
   return (
     <html lang={locale}>
       <body>
-        <NextIntlClientProvider messages={messages}>
-          {children}
-        </NextIntlClientProvider>
+        <InstallProviders locale={locale}>{children}</InstallProviders>
       </body>
     </html>
   );
