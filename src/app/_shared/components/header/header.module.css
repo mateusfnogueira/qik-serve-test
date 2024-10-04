@@ -1,0 +1,28 @@
+.header {
+  background-color: #5d4037;
+  color: white;
+  padding: 15px;
+  display: flex;
+  align-items: flex-end;
+  position: relative;
+  height: 100px;
+}
+
+.title {
+  font-size: 1.5rem;
+  margin: 0;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.hamburger_menu {
+  font-size: 1.5rem;
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  position: absolute;
+  bottom: 0;
+  right: 20px;
+}

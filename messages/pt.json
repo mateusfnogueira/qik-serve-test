@@ -7,5 +7,10 @@
     "title": "Bem-vindo ao React",
     "subtitle": "Uma biblioteca JavaScript para criar interfaces de usuário",
     "button": "Saiba mais"
+  },
+  "Header": {
+    "home": "Início",
+    "menu": "Menu",
+    "cart": "Carrinho"
   }
 }
