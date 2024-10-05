@@ -12,5 +12,13 @@
     "home": "Início",
     "menu": "Menu",
     "cart": "Carrinho"
+  },
+  "Menu": {
+    "title": "Menu",
+    "subtitle": "Escolha uma opção"
+  },
+  "Cart": {
+    "title": "Carrinho",
+    "subtitle": "Seu carrinho de compras"
   }
 }

@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { IConfig } from "../interfaces/config.interface";
 
 export default function useConfigHook() {
-  const [data, setData] = useState<IConfig | null>(null);
+  const [config, setConfig] = useState<IConfig | null>(null);
   const [error, setError] = useState("");
 
   async function fetchConfig() {
@@ -17,7 +17,7 @@ export default function useConfigHook() {
     async function fetchData() {
       try {
         const configData = await fetchConfig();
-        setData(configData.data);
+        setConfig(configData.data);
       } catch {
         setError("Failed to fetch data");
       }
@@ -25,5 +25,5 @@ export default function useConfigHook() {
     fetchData();
   }, []);
 
-  return { data, error };
+  return { config, error };
 }

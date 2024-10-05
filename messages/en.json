@@ -1,11 +1,16 @@
 {
-    "LocaleLayout": {
-        "title": "React i18n",
-        "description": "Developed by Mateus Nogueira"
-    },
-    "Home": {
-        "title": "Bem-vindo ao React inglês",
-        "subtitle": "Uma biblioteca JavaScript para criar interfaces de usuário",
-        "button": "Saiba mais"
-    }
+  "LocaleLayout": {
+    "title": "React i18n",
+    "description": "Developed by Mateus Nogueira"
+  },
+  "Home": {
+    "title": "Bem-vindo ao React inglês",
+    "subtitle": "Uma biblioteca JavaScript para criar interfaces de usuário",
+    "button": "Saiba mais"
+  },
+  "Header": {
+    "home": "Home",
+    "menu": "Menu",
+    "cart": "Cart"
+  }
 }
