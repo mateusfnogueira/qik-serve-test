@@ -5,11 +5,9 @@ import {
 } from "next-intl/server";
 import { routing } from "@/i18n/routing";
 import { InstallProviders } from "../_shared/provider/install-providers";
-
-import style from "./root.module.css";
-import Header from "../_shared/components/header/header.component";
 import { cookies } from "next/headers";
 import { Hero } from "../_shared/components/hero/hero.component";
+import { Header } from "../_shared/components/header/header.component";
 
 type Props = {
   children: React.ReactNode;
@@ -44,9 +42,8 @@ export default async function GlobalLayout({
   return (
     <html lang={locale}>
       <body
-        className={style.body}
         style={{
-          backgroundColor: siteConfig?.webSettings?.backgroundColor,
+          backgroundColor: siteConfig?.webSettings?.backgroundColour,
         }}
       >
         <InstallProviders

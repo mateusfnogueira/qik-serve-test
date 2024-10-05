@@ -3,7 +3,7 @@ import { usePathname } from "next/navigation";
 import { useTranslations } from "next-intl";
 import style from "./header.module.css";
 
-export default function Header({
+export function Header({
   backgroundColor,
 }: {
   backgroundColor: string;

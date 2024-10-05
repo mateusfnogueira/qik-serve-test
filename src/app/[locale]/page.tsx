@@ -3,10 +3,15 @@ import Cookies from "js-cookie";
 import { useTranslations } from "next-intl";
 import { IConfig } from "../_shared/interfaces/config.interface";
 import { useEffect, useState } from "react";
+import Link from "next/link";
 
-export default function HomePage() {
+import style from "./home.module.css";
+
+export default function HomePage({params}: {params: {locale: string}}) {
   const [siteConfig, setSiteConfig] = useState<IConfig | null>(null);
   const t = useTranslations("Home");
+
+  const locale = params.locale;
 
   useEffect(() => {
     const value = Cookies.get("siteConfig");
@@ -18,9 +23,19 @@ export default function HomePage() {
   }
 
   return (
-    <main>
-      <h1>{siteConfig.name}</h1>
-      <p>{t("title")}</p>
+    <main className={style.main}>
+      <h1 className={style.title}>
+        {t("title").replace("%name%", siteConfig.name)}
+      </h1>
+
+      <div className={`${style.button} button`}>
+        <Link href={`/${locale}/menu`}>{t("button")}</Link>
+      </div>
+      <style jsx>{`
+        .button:hover {
+          background-color: ${siteConfig.webSettings.primaryColourHover};
+        }
+      `}</style>
     </main>
   );
 }

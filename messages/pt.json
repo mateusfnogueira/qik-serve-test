@@ -3,15 +3,16 @@
     "title": "React i18n",
     "description": "Desenvolvido por Mateus Nogueira"
   },
-  "Home": {
-    "title": "Bem-vindo ao React",
-    "subtitle": "Uma biblioteca JavaScript para criar interfaces de usuário",
-    "button": "Saiba mais"
-  },
   "Header": {
     "home": "Início",
     "menu": "Menu",
-    "cart": "Carrinho"
+    "cart": "Carrinho",
+    "loading": "Carregando..."
+  },
+  "Home": {
+    "title": "Bem-vindo ao %name%",
+    "button": "Acessar menu",
+    "loading": "Carregando..."
   },
   "Menu": {
     "title": "Menu",

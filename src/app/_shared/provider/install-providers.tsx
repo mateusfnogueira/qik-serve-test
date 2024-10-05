@@ -10,7 +10,7 @@ interface Props {
   timeZone?: string;
 }
 
-export const InstallProviders: React.FC<Props> = async ({
+export const InstallProviders: React.FC<Props> = ({
   children,
   locale,
   messages,
