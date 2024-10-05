@@ -9,6 +9,7 @@ import { InstallProviders } from "../_shared/provider/install-providers";
 import style from "./root.module.css";
 import Header from "../_shared/components/header/header.component";
 import { cookies } from "next/headers";
+import { Hero } from "../_shared/components/hero/hero.component";
 
 type Props = {
   children: React.ReactNode;
@@ -30,7 +31,7 @@ export async function generateMetadata({
   };
 }
 
-export default async function LocaleLayout({
+export default async function GlobalLayout({
   children,
   params: { locale },
 }: Props) {
@@ -56,6 +57,7 @@ export default async function LocaleLayout({
           <Header
             backgroundColor={siteConfig?.webSettings?.navBackgroundColour}
           />
+          <Hero src={siteConfig?.webSettings?.bannerImage} />
           {children}
         </InstallProviders>
       </body>
