@@ -5,6 +5,9 @@ type Props = {
   children: ReactNode;
 };
 
-export default function RootLayout({ children }: Props) {
+export default async function RootLayout({ children }: Props) {
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
+  await fetch(`${baseUrl}/api/venue`, { method: "GET" });
+
   return children;
 }

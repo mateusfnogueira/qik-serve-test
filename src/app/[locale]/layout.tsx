@@ -1,9 +1,14 @@
-import { getTranslations } from "next-intl/server";
+import {
+  getMessages,
+  getTranslations,
+  unstable_setRequestLocale,
+} from "next-intl/server";
 import { routing } from "@/i18n/routing";
 import { InstallProviders } from "../_shared/provider/install-providers";
 
 import style from "./root.module.css";
 import Header from "../_shared/components/header/header.component";
+import { cookies } from "next/headers";
 
 type Props = {
   children: React.ReactNode;
@@ -29,11 +34,28 @@ export default async function LocaleLayout({
   children,
   params: { locale },
 }: Props) {
+  unstable_setRequestLocale(locale);
+  const cookieStore = cookies();
+  let configs = cookieStore.get("siteConfig")?.value;
+  const siteConfig = configs ? JSON.parse(configs) : null;
+
+  const messages = await getMessages();
   return (
     <html lang={locale}>
-      <body className={style.body}>
-        <InstallProviders locale={locale}>
-          <Header />
+      <body
+        className={style.body}
+        style={{
+          backgroundColor: siteConfig?.webSettings?.backgroundColor,
+        }}
+      >
+        <InstallProviders
+          locale={locale}
+          messages={messages}
+          timeZone={siteConfig?.timeZone}
+        >
+          <Header
+            backgroundColor={siteConfig?.webSettings?.navBackgroundColour}
+          />
           {children}
         </InstallProviders>
       </body>

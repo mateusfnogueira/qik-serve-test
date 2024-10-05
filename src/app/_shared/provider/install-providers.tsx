@@ -1,21 +1,30 @@
-import { NextIntlClientProvider } from "next-intl";
-import { getMessages, unstable_setRequestLocale } from "next-intl/server";
+"use client";
+import { globalStore } from "@/stores/global.store";
+import { AbstractIntlMessages, NextIntlClientProvider } from "next-intl";
+import { Provider } from "react-redux";
 
 interface Props {
   children: React.ReactNode;
   locale: string;
+  messages: AbstractIntlMessages;
+  timeZone?: string;
 }
 
 export const InstallProviders: React.FC<Props> = async ({
   children,
   locale,
+  messages,
+  timeZone,
 }) => {
-  unstable_setRequestLocale(locale);
-
-  const messages = await getMessages();
   return (
-    <NextIntlClientProvider locale={locale} messages={messages}>
-      {children}
-    </NextIntlClientProvider>
+    <Provider store={globalStore}>
+      <NextIntlClientProvider
+        locale={locale}
+        messages={messages}
+        timeZone={timeZone ?? "America/Sao_Paulo"}
+      >
+        {children}
+      </NextIntlClientProvider>
+    </Provider>
   );
 };
