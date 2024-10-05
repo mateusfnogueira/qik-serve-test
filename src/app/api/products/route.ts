@@ -10,7 +10,6 @@ export async function GET(_req: NextApiRequest, res: NextApiResponse) {
       return NextResponse.error();
     }
     const data: IProductMenu = await res.json();
-
     return NextResponse.json({ data: data, message: "Config saved in cookie" });
   } catch (error) {
     return NextResponse.error();
