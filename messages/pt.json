@@ -16,7 +16,12 @@
   },
   "Menu": {
     "title": "Menu",
-    "subtitle": "Escolha uma opção"
+    "subtitle": "Escolha uma opção",
+    "items": {
+      "burgers": "Hambúrgueres",
+      "drinks": "Bebidas",
+      "desserts": "Sobremesas"
+    }
   },
   "Cart": {
     "title": "Carrinho",

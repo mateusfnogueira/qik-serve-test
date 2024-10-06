@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 import { IProductCategory, IProductMenu } from "../interfaces";
 
-export function useProducts(categorie?: string) {
+export function useProducts() {
   const [products, setProducts] = useState<IProductCategory[]>([]);
+  const [selectedCategory, setSelectedCategory] = useState<string | undefined>()
   const [loading, setLoading] = useState(false);
 
   function filterProductsByCategory(
@@ -21,17 +22,9 @@ export function useProducts(categorie?: string) {
       setProducts(data.data.sections);
       setLoading(false);
     };
-    if (categorie) {
-      const data = filterProductsByCategory(products, categorie);
-      if (data) {
-        setProducts(
-          data.filter((item): item is IProductCategory => item !== undefined)
-        );
-      }
-    }
 
     fetchProducts();
-  }, [categorie]);
+  }, []);
 
-  return { products, loading };
+  return { products, loading, selectedCategory, setSelectedCategory };
 }
