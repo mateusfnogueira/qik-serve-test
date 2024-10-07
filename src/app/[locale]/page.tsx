@@ -7,7 +7,7 @@ import Link from "next/link";
 
 import style from "./home.module.css";
 
-export default function HomePage({params}: {params: {locale: string}}) {
+export default function HomePage({ params }: { params: { locale: string } }) {
   const [siteConfig, setSiteConfig] = useState<IConfig | null>(null);
   const t = useTranslations("Home");
 
@@ -18,6 +18,7 @@ export default function HomePage({params}: {params: {locale: string}}) {
     setSiteConfig(value ? JSON.parse(value) : null);
   }, []);
 
+  console.log(siteConfig);
   if (!siteConfig) {
     return <main>{t("loading")}</main>;
   }
@@ -33,7 +34,9 @@ export default function HomePage({params}: {params: {locale: string}}) {
       </div>
       <style jsx>{`
         .button:hover {
-          background-color: ${siteConfig.webSettings.primaryColourHover};
+          background-color: ${siteConfig
+            ? siteConfig.webSettings.primaryColourHover
+            : "#4f372f"};
         }
       `}</style>
     </main>

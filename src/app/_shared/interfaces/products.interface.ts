@@ -15,6 +15,7 @@ export interface IProduct {
   sku: string;
   images: Images[];
   available: boolean;
+  category: string;
 }
 
 export interface IProductCategory {
@@ -24,7 +25,7 @@ export interface IProductCategory {
   position: number;
   visible: number;
   images: Images[];
-  items: IProduct[];
+  items?: IProduct[];
 }
 
 export interface IProductMenu {
@@ -33,4 +34,9 @@ export interface IProductMenu {
   type: string;
   collapse: number;
   sections: IProductCategory[];
+}
+
+export interface IProductsResponse {
+  categoryList: IProductCategory[];
+  allProducts: IProduct[];
 }

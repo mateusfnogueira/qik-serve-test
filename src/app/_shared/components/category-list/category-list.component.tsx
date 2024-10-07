@@ -9,7 +9,6 @@ interface CategoryListProps {
 }
 
 export function CategoryList({ categories }: CategoryListProps) {
-  const { selectedCategory, setSelectedCategory } = useProducts();
 
   return (
     <div className={style.category_list}>
@@ -17,8 +16,6 @@ export function CategoryList({ categories }: CategoryListProps) {
         <CategoryListItem
           key={i}
           category={category}
-          activeCategory={selectedCategory}
-          setCategory={setSelectedCategory}
         />
       ))}
     </div>

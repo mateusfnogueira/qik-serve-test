@@ -1,9 +1,12 @@
 import { useEffect, useState } from "react";
-import { IProductCategory, IProductMenu } from "../interfaces";
+import { IProduct, IProductCategory } from "../interfaces";
 
 export function useProducts() {
-  const [products, setProducts] = useState<IProductCategory[]>([]);
-  const [selectedCategory, setSelectedCategory] = useState<string | undefined>()
+  const [products, setProducts] = useState<IProduct[]>([]);
+  const [categories, setCategories] = useState<IProductCategory[]>([]);
+  const [selectedCategory, setSelectedCategory] = useState<
+    string | undefined
+  >();
   const [loading, setLoading] = useState(false);
 
   function filterProductsByCategory(
@@ -19,12 +22,19 @@ export function useProducts() {
       setLoading(true);
       const response = await fetch("/api/products");
       const data = await response.json();
-      setProducts(data.data.sections);
+      setCategories(data.data.categoryList);
+      setProducts(data.data.allProducts);
       setLoading(false);
     };
 
     fetchProducts();
   }, []);
 
-  return { products, loading, selectedCategory, setSelectedCategory };
+  return {
+    products,
+    categories,
+    loading,
+    selectedCategory,
+    setSelectedCategory,
+  };
 }

@@ -4,37 +4,37 @@ import { IConfig, IProductCategory } from "../../interfaces";
 
 import style from "./category-list.module.css";
 import Cookies from "js-cookie";
+import { useProducts } from "../../hooks";
+import { useEffect } from "react";
 
 interface CategoryListProps {
   category: IProductCategory;
-  setCategory: (category: string) => void;
-  activeCategory?: string;
 }
 
-export function CategoryListItem({
-  category,
-  setCategory,
-  activeCategory,
-}: CategoryListProps) {
+export function CategoryListItem({ category }: CategoryListProps) {
   const t = useTranslations("Menu");
+  const { selectedCategory, setSelectedCategory } = useProducts();
 
   const cookies = Cookies.get("siteConfig");
   const siteConfig: IConfig = cookies ? JSON.parse(cookies) : null;
 
   const hoverColor = siteConfig?.webSettings.primaryColourHover;
 
+  useEffect(() => {
+    console.log(selectedCategory);
+  }, [selectedCategory]);
+
   return (
     <div
       className={style.category_item}
       onClick={() => {
-        setCategory(category.name);
+        setSelectedCategory(category.name);
       }}
     >
       <span
         className={style.category_border_img}
         style={{
-          borderColor:
-            activeCategory === category.name ? hoverColor : "transparent",
+          borderColor: selectedCategory === category.name ? hoverColor : "blue",
         }}
       >
         <img
@@ -47,13 +47,14 @@ export function CategoryListItem({
         <p className={style.category_name}>
           {t(`items.${category.name.toLowerCase()}`)}
         </p>
-        <span
-          className={style.category_name_border}
-          style={{
-            borderColor:
-              activeCategory === category.name ? hoverColor : "transparent",
-          }}
-        ></span>
+        {selectedCategory === category.name && (
+          <span
+            className={style.category_name_border}
+            style={{
+              borderColor: hoverColor,
+            }}
+          ></span>
+        )}
       </div>
     </div>
   );

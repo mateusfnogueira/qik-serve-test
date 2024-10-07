@@ -6,14 +6,15 @@ import { useTranslations } from "next-intl";
 export default function MenuPage() {
   const t = useTranslations("Menu");
 
-  const { products, loading } = useProducts();
+  const { products, categories, loading } = useProducts();
 
   if (loading) {
     return <main>loading</main>;
   }
+
   return (
     <main>
-      <CategoryList categories={products} />
+      <CategoryList categories={categories} />
     </main>
   );
 }
