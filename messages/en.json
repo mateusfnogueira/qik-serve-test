@@ -4,13 +4,26 @@
     "description": "Developed by Mateus Nogueira"
   },
   "Home": {
-    "title": "Bem-vindo ao React inglês",
-    "subtitle": "Uma biblioteca JavaScript para criar interfaces de usuário",
-    "button": "Saiba mais"
+    "title": "Welcome to %name%",
+    "button": "Access menu",
+    "loading": "Loading..."
   },
   "Header": {
     "home": "Home",
     "menu": "Menu",
     "cart": "Cart"
+  },
+  "Menu": {
+    "title": "Menu",
+    "subtitle": "Choose an option",
+    "items": {
+      "burgers": "Burgers",
+      "drinks": "Drinks",
+      "desserts": "Desserts"
+    }
+  },
+  "Cart": {
+    "title": "Cart",
+    "subtitle": "Your shopping cart"
   }
 }

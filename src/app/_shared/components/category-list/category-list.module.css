@@ -1,7 +1,7 @@
 .category_list {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: flex-start;
   gap: 16px;
   padding: 24px 0px 20px 12px;
 }

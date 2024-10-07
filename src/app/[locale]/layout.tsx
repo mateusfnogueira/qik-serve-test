@@ -39,6 +39,7 @@ export default async function GlobalLayout({
   const siteConfig = configs ? JSON.parse(configs) : null;
 
   const messages = await getMessages();
+
   return (
     <html lang={locale}>
       <body

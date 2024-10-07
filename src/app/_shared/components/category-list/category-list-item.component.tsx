@@ -24,14 +24,14 @@ export function CategoryListItem({
 
   const hoverColor = siteConfig?.webSettings.primaryColourHover;
 
-  useEffect(() => {
-    console.log(selectedCategory);
-  }, [selectedCategory]);
-
   return (
     <div
       className={style.category_item}
       onClick={() => {
+        if (selectedCategory === category.name) {
+          setSelectedCategory("");
+          return;
+        }
         setSelectedCategory(category.name);
       }}
     >
