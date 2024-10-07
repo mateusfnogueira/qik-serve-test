@@ -25,7 +25,15 @@ export function ProductModal({ isOpen, product, onClose }: ProductModalProps) {
         <button className={style.close_button} onClick={onClose}>
           X
         </button>
-        <img className={style.product_img} src={product.images[0].image} alt={product.name} />
+        {product.images ? (
+          <img className={style.product_img} src={product.images[0].image} alt={product.name} />
+        ) : (
+          <img
+            className={style.product_img}
+            src={'/imgs/not_image_available.jpg'}
+            alt={product.name}
+          />
+        )}
 
         <div className={style.product_info}>
           <h2>{product.name}</h2>
@@ -54,7 +62,9 @@ export function ProductModal({ isOpen, product, onClose }: ProductModalProps) {
               </label>
             ))}
           </div>
-        ) : null}
+        ) : (
+          <div className={style.size_options}></div>
+        )}
         <div className={style.div_control}>
           <div className={style.quantity_control}>
             <button onClick={() => setSelectedQuantity((prev) => (prev > 1 ? prev - 1 : 1))}>
@@ -65,7 +75,7 @@ export function ProductModal({ isOpen, product, onClose }: ProductModalProps) {
           </div>
 
           <button className={style.add_to_cart}>
-            Add to cart - R${(selectedSize?.price ?? 0) * selectedQuantity}
+            Add to cart - R${(selectedSize?.price ?? product.price) * selectedQuantity}
           </button>
         </div>
       </div>

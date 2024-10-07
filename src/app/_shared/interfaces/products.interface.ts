@@ -60,3 +60,10 @@ export interface IModifierItem {
   availabilityType: string
   available: boolean
 }
+
+export interface IOrderItem {
+  quantity: number
+  product: IProduct
+  size?: IModifierItem
+  totalOrder: number
+}

@@ -63,6 +63,7 @@
   border-top: 1px solid #ddd;
   display: flex;
   flex-direction: column;
+  min-height: 270px;
 }
 
 .options_description {
