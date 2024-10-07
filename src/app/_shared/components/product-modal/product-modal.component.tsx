@@ -1,7 +1,11 @@
 /* eslint-disable @next/next/no-img-element */
 import { useState } from 'react'
-import { IModifierItem, IProduct } from '../../interfaces'
+import { v4 as uuidv4 } from 'uuid'
+import { IModifierItem, IOrderItem, IProduct } from '../../interfaces'
 import style from './style.module.css'
+import { globalStore } from '../../../../stores/global.store'
+import { useDispatch } from 'react-redux'
+import { addProduct } from '../../../../features/product.slice'
 
 interface ProductModalProps {
   isOpen: boolean
@@ -13,11 +17,30 @@ export function ProductModal({ isOpen, product, onClose }: ProductModalProps) {
   const [selectedSize, setSelectedSize] = useState<IModifierItem | null>(null)
   const [selectedQuantity, setSelectedQuantity] = useState(1)
 
+  const store = globalStore
+
+  const dispatch = useDispatch()
+
   function handleSelectSize(size: IModifierItem) {
     setSelectedSize(size)
   }
 
   if (!isOpen || !product) return null
+
+  function handleAddToCart() {
+    const orderItem: IOrderItem = {
+      id: uuidv4(),
+      itemId: product?.id.toString(),
+      name: product?.name,
+      itemPrice: selectedSize?.price ?? product?.price ?? 0,
+      quantity: selectedQuantity,
+      description: selectedSize?.name ?? ''
+    }
+    dispatch(addProduct(orderItem))
+    onClose()
+  }
+
+  console.log(store.getState())
 
   return (
     <div className={style.overlay}>
@@ -74,7 +97,7 @@ export function ProductModal({ isOpen, product, onClose }: ProductModalProps) {
             <button onClick={() => setSelectedQuantity((prev) => prev + 1)}>+</button>
           </div>
 
-          <button className={style.add_to_cart}>
+          <button className={style.add_to_cart} onClick={handleAddToCart}>
             Add to cart - R${(selectedSize?.price ?? product.price) * selectedQuantity}
           </button>
         </div>

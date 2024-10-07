@@ -62,8 +62,16 @@ export interface IModifierItem {
 }
 
 export interface IOrderItem {
+  id: string
+  itemId?: string
+  name?: string
+  description?: string
   quantity: number
-  product: IProduct
-  size?: IModifierItem
-  totalOrder: number
+  itemPrice: number
+}
+
+export interface IOrder {
+  items: IOrderItem[]
+  total: number
+  status?: string
 }
