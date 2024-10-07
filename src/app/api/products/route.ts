@@ -48,10 +48,7 @@ export async function GET(req: NextApiRequest, res: NextApiResponse) {
       });
     }
 
-    console.log(ifCategory);
-
     if (ifCategory) {
-      console.log("entoru no if");
       formatedResponse.allProducts = formatedResponse.allProducts.filter(
         (product: IProduct) => {
           return product.category === category;

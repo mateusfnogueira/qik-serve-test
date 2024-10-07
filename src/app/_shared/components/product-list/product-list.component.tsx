@@ -1,6 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
 import { useEffect, useState } from "react";
-import { useProducts } from "../../hooks";
 
 import styles from "./product-list.module.css";
 import {
@@ -8,9 +7,17 @@ import {
   IProductCategory,
 } from "../../interfaces/products.interface";
 
-export function ProductList({ categorie }: { categorie: IProductCategory }) {
-  const { products, loading } = useProducts();
+interface ProductListProps {
+  categorie: IProductCategory;
+  products: IProduct[];
+  setSelectedProduct: (product: IProduct) => void;
+}
 
+export function ProductList({
+  categorie,
+  products,
+  setSelectedProduct,
+}: ProductListProps) {
   const [isOpen, setIsOpen] = useState(true);
   const [filteredProducts, setFilteredProducts] = useState<IProduct[]>([]);
 
@@ -25,7 +32,9 @@ export function ProductList({ categorie }: { categorie: IProductCategory }) {
 
     setFilteredProducts(newProducts);
     console.log(products);
-  }, [products, loading, categorie]);
+  }, [products, categorie]);
+
+  if (filteredProducts.length === 0) return null;
 
   return (
     <div className={styles.accordion}>
@@ -38,7 +47,11 @@ export function ProductList({ categorie }: { categorie: IProductCategory }) {
         className={`${styles.accordion_content} ${isOpen ? styles.open : ""}`}
       >
         {filteredProducts.map((product, i) => (
-          <div key={i} className={styles.product_item}>
+          <div
+            key={i}
+            className={styles.product_item}
+            onClick={() => setSelectedProduct(product)}
+          >
             <div className={styles.product_info}>
               <h3>{product.name}</h3>
               <p>{product.description}</p>
