@@ -20,7 +20,9 @@ export function useProducts() {
   useEffect(() => {
     const fetchProducts = async () => {
       setLoading(true);
-      const response = await fetch("/api/products");
+      const response = await fetch(
+        `/api/products?category=${selectedCategory}`
+      );
       const data = await response.json();
       setCategories(data.data.categoryList);
       setProducts(data.data.allProducts);
@@ -28,7 +30,7 @@ export function useProducts() {
     };
 
     fetchProducts();
-  }, []);
+  }, [selectedCategory]);
 
   return {
     products,

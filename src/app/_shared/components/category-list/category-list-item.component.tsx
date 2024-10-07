@@ -4,16 +4,20 @@ import { IConfig, IProductCategory } from "../../interfaces";
 
 import style from "./category-list.module.css";
 import Cookies from "js-cookie";
-import { useProducts } from "../../hooks";
 import { useEffect } from "react";
 
 interface CategoryListProps {
   category: IProductCategory;
+  selectedCategory?: string;
+  setSelectedCategory: (category: string) => void;
 }
 
-export function CategoryListItem({ category }: CategoryListProps) {
+export function CategoryListItem({
+  category,
+  selectedCategory,
+  setSelectedCategory,
+}: CategoryListProps) {
   const t = useTranslations("Menu");
-  const { selectedCategory, setSelectedCategory } = useProducts();
 
   const cookies = Cookies.get("siteConfig");
   const siteConfig: IConfig = cookies ? JSON.parse(cookies) : null;
@@ -34,7 +38,8 @@ export function CategoryListItem({ category }: CategoryListProps) {
       <span
         className={style.category_border_img}
         style={{
-          borderColor: selectedCategory === category.name ? hoverColor : "blue",
+          borderColor:
+            selectedCategory === category.name ? hoverColor : "transparent",
         }}
       >
         <img
@@ -47,14 +52,13 @@ export function CategoryListItem({ category }: CategoryListProps) {
         <p className={style.category_name}>
           {t(`items.${category.name.toLowerCase()}`)}
         </p>
-        {selectedCategory === category.name && (
-          <span
-            className={style.category_name_border}
-            style={{
-              borderColor: hoverColor,
-            }}
-          ></span>
-        )}
+        <span
+          className={style.category_name_border}
+          style={{
+            borderColor:
+              selectedCategory === category.name ? hoverColor : "transparent",
+          }}
+        ></span>
       </div>
     </div>
   );

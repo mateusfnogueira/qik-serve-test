@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 
 import style from "./home.module.css";
+import useConfigHook from "../_shared/hooks/config.hook";
 
 export default function HomePage({ params }: { params: { locale: string } }) {
   const [siteConfig, setSiteConfig] = useState<IConfig | null>(null);
@@ -13,12 +14,13 @@ export default function HomePage({ params }: { params: { locale: string } }) {
 
   const locale = params.locale;
 
+  const { config } = useConfigHook();
+
   useEffect(() => {
     const value = Cookies.get("siteConfig");
-    setSiteConfig(value ? JSON.parse(value) : null);
+    setSiteConfig(value ? JSON.parse(value) : config);
   }, []);
 
-  console.log(siteConfig);
   if (!siteConfig) {
     return <main>{t("loading")}</main>;
   }
