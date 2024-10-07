@@ -163,3 +163,15 @@
   cursor: pointer;
   border-radius: 40px;
 }
+
+@media (min-width: 768px) {
+  .modal {
+    width: 393px;
+    height: fit-content;
+    padding-bottom: 4px;
+  }
+
+  .product_img {
+    height: 200px;
+  }
+}
