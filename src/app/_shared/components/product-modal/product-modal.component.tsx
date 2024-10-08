@@ -3,7 +3,6 @@ import { useState } from 'react'
 import { v4 as uuidv4 } from 'uuid'
 import { IModifierItem, IOrderItem, IProduct } from '../../interfaces'
 import style from './style.module.css'
-import { globalStore } from '../../../../stores/global.store'
 import { useDispatch } from 'react-redux'
 import { addProduct } from '../../../../features/product.slice'
 import { Button } from '../commom-button/common-button.component'
@@ -19,8 +18,6 @@ export function ProductModal({ isOpen, product, onClose }: ProductModalProps) {
   const t = useTranslations('Menu')
   const [selectedSize, setSelectedSize] = useState<IModifierItem | null>(null)
   const [selectedQuantity, setSelectedQuantity] = useState(1)
-
-  const store = globalStore
 
   const dispatch = useDispatch()
 
@@ -42,8 +39,6 @@ export function ProductModal({ isOpen, product, onClose }: ProductModalProps) {
     dispatch(addProduct(orderItem))
     onClose()
   }
-
-  console.log(store.getState())
 
   return (
     <div className={style.overlay}>

@@ -5,6 +5,7 @@ import { Button } from '../commom-button/common-button.component'
 
 import style from './style.module.css'
 import { useTranslations } from 'next-intl'
+import { OrderModal } from '../order-modal/order-modal.component'
 
 export function FooterComponent() {
   const t = useTranslations('Footer')
@@ -13,6 +14,7 @@ export function FooterComponent() {
   const { getState, subscribe } = store
 
   const [order, setOrder] = useState(getState().product.Order)
+  const [isOpen, setIsOpen] = useState(false)
 
   useEffect(() => {
     const unsubscribe = subscribe(() => {
@@ -25,18 +27,21 @@ export function FooterComponent() {
   if (order.items.length === 0) return null
 
   return (
-    <footer className={style.footer}>
-      <Button onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
-        {t('text button').replace('%price%', order.total.toString())}
-      </Button>
-      <div className={style.disclaimer}>
-        <p>
-          Developed by{' '}
-          <a href="https://www.linkedin.com/in/mateusfnogueira/" target="_blank" rel="noreferrer">
-            Mateus Nogueira
-          </a>
-        </p>
-      </div>
-    </footer>
+    <>
+      <footer className={style.footer}>
+        <Button onClick={() => setIsOpen(true)}>
+          {t('text button').replace('%price%', order.total.toString())}
+        </Button>
+        <div className={style.disclaimer}>
+          <p>
+            Developed by{' '}
+            <a href="https://www.linkedin.com/in/mateusfnogueira/" target="_blank" rel="noreferrer">
+              Mateus Nogueira
+            </a>
+          </p>
+        </div>
+      </footer>
+      <OrderModal isOpen={isOpen} onClose={() => setIsOpen(false)} />
+    </>
   )
 }
