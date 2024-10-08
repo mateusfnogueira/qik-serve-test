@@ -7,6 +7,7 @@ import { useDispatch } from 'react-redux'
 import { addProduct } from '../../../../features/product.slice'
 import { Button } from '../commom-button/common-button.component'
 import { useTranslations } from 'next-intl'
+import { QuantityControlComponent } from '../quantity-control/quantity-control.component'
 
 interface ProductModalProps {
   isOpen: boolean
@@ -23,6 +24,14 @@ export function ProductModal({ isOpen, product, onClose }: ProductModalProps) {
 
   function handleSelectSize(size: IModifierItem) {
     setSelectedSize(size)
+  }
+
+  function addItem() {
+    setSelectedQuantity((prev) => prev + 1)
+  }
+
+  function removeItem() {
+    setSelectedQuantity((prev) => (prev > 1 ? prev - 1 : 1))
   }
 
   if (!isOpen || !product) return null
@@ -92,13 +101,11 @@ export function ProductModal({ isOpen, product, onClose }: ProductModalProps) {
           <div className={style.size_options}></div>
         )}
         <div className={style.div_control}>
-          <div className={style.quantity_control}>
-            <button onClick={() => setSelectedQuantity((prev) => (prev > 1 ? prev - 1 : 1))}>
-              -
-            </button>
-            <span>{selectedQuantity}</span>
-            <button onClick={() => setSelectedQuantity((prev) => prev + 1)}>+</button>
-          </div>
+          <QuantityControlComponent
+            addItems={addItem}
+            removeItems={removeItem}
+            quantity={selectedQuantity}
+          />
 
           <Button onClick={handleAddToCart}>
             {t('Modal.add to cart').replace(

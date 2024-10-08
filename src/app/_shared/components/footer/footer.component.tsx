@@ -15,6 +15,7 @@ export function FooterComponent() {
 
   const [order, setOrder] = useState(getState().product.Order)
   const [isOpen, setIsOpen] = useState(false)
+  const [isDesktop, setIsDesktop] = useState(false)
 
   useEffect(() => {
     const unsubscribe = subscribe(() => {
@@ -24,7 +25,18 @@ export function FooterComponent() {
     return () => unsubscribe()
   }, [subscribe, getState])
 
-  if (order.items.length === 0) return null
+  useEffect(() => {
+    const handleResize = () => {
+      setIsDesktop(window.innerWidth >= 1024)
+    }
+
+    handleResize()
+    window.addEventListener('resize', handleResize)
+
+    return () => window.removeEventListener('resize', handleResize)
+  }, [])
+
+  if (order.items.length === 0 || isDesktop) return null
 
   return (
     <>
