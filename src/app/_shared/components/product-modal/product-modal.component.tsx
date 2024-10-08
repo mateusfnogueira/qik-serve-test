@@ -8,6 +8,7 @@ import { addProduct } from '../../../../features/product.slice'
 import { Button } from '../commom-button/common-button.component'
 import { useTranslations } from 'next-intl'
 import { QuantityControlComponent } from '../quantity-control/quantity-control.component'
+import { formatCurrency } from '../../utils/currency.util'
 
 interface ProductModalProps {
   isOpen: boolean
@@ -85,7 +86,7 @@ export function ProductModal({ isOpen, product, onClose }: ProductModalProps) {
               <label key={i}>
                 <div className={style.item_description}>
                   <h3>{item.name}</h3>
-                  <p>R${item.price}</p>
+                  <p>{formatCurrency(item.price)}</p>
                 </div>
                 <input
                   type="radio"
@@ -110,7 +111,7 @@ export function ProductModal({ isOpen, product, onClose }: ProductModalProps) {
           <Button onClick={handleAddToCart}>
             {t('Modal.add to cart').replace(
               '%price%',
-              ((selectedSize?.price ?? product.price) * selectedQuantity).toString()
+              formatCurrency((selectedSize?.price ?? product.price) * selectedQuantity).toString()
             )}
           </Button>
         </div>

@@ -1,5 +1,6 @@
 .quantity_control {
   display: flex;
+  width: fit-content;
   justify-content: center;
   align-items: center;
   margin-top: 27px;

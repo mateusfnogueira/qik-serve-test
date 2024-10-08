@@ -29,7 +29,11 @@
   },
   "Cart": {
     "Basket": "Basket",
-    "subtitle": "Your shopping cart"
+    "subtitle": "Your shopping cart",
+    "subtotal": "Sub total",
+    "empty": "Your basket is empty",
+    "total": "Total",
+    "checkout": "Checkout now"
   },
   "Footer": {
     "text button": "Your Basket • %price%",

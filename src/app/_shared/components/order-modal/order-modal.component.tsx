@@ -3,7 +3,9 @@ import style from './style.module.css'
 import { useTranslations } from 'next-intl'
 import { QuantityControlComponent } from '../quantity-control/quantity-control.component'
 import { IOrderItem } from '../../interfaces'
-import { addQuantityProduct, removeQuantityProduct } from '@/features/product.slice'
+import { addQuantityProduct, removeProduct, removeQuantityProduct } from '@/features/product.slice'
+import { formatCurrency } from '../../utils/currency.util'
+import { Button } from '../commom-button/common-button.component'
 
 interface OrderModalProps {
   isOpen: boolean
@@ -23,6 +25,11 @@ export function OrderModal({ isOpen, onClose }: OrderModalProps) {
   }
 
   function removeItems(item: IOrderItem) {
+    if (item.quantity === 1) {
+      dispatch(removeProduct(item.id))
+      onClose()
+      return
+    }
     dispatch(removeQuantityProduct(item))
   }
 
@@ -45,28 +52,32 @@ export function OrderModal({ isOpen, onClose }: OrderModalProps) {
                 <h3>{item.name}</h3>
                 {item.description && item.description !== '' && (
                   <p>
-                    {item.description} - {'(' + item.itemPrice + ')'}
+                    {item.description} - {'(' + formatCurrency(item.itemPrice) + ')'}
                   </p>
                 )}
                 <QuantityControlComponent
+                  size="small"
                   addItems={() => addItems(item)}
                   removeItems={() => removeItems(item)}
                   quantity={item.quantity}
                 />
               </div>
 
-              <p className={style.price}>R${item.itemPrice * item.quantity}</p>
+              <p className={style.price}>{formatCurrency(item.itemPrice * item.quantity)}</p>
             </div>
           ))}
 
           <div className={style.sub_total}>
-            <p>Subtotal</p>
-            <p>R$ {order.total}</p>
+            <p>{t('subtotal')}</p>
+            <p>{formatCurrency(order.total)}</p>
           </div>
           <div className={style.total}>
-            <p>Total</p>
-            <p>R$ {order.total}</p>
+            <p>{t('total')}</p>
+            <p>{formatCurrency(order.total)}</p>
           </div>
+        </div>
+        <div className={style.modal_footer}>
+          <Button onClick={onClose}>{t('checkout')}</Button>
         </div>
       </div>
     </div>
