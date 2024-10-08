@@ -16,6 +16,7 @@
   "Menu": {
     "title": "Menu",
     "subtitle": "Choose an option",
+    "loading": "Loading...",
     "items": {
       "burgers": "Burgers",
       "drinks": "Drinks",

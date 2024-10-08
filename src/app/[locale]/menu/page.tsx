@@ -16,7 +16,7 @@ export default function MenuPage() {
   const [openModal, setOpenModal] = useState(false)
 
   if (loading) {
-    return <main>loading</main>
+    return <main>{t('loading')}</main>
   }
 
   function handleCloseModal() {
