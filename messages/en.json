@@ -28,7 +28,7 @@
     }
   },
   "Cart": {
-    "title": "Cart",
+    "Basket": "Basket",
     "subtitle": "Your shopping cart"
   },
   "Footer": {
