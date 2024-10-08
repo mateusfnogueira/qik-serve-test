@@ -45,14 +45,14 @@ export function FooterComponent() {
         <Button onClick={() => setIsOpen(true)}>
           {t('text button').replace('%price%', formatCurrency(order.total.toString()))}
         </Button>
-        <div className={style.disclaimer}>
+        {/* <div className={style.disclaimer}>
           <p>
             Developed by{' '}
             <a href="https://www.linkedin.com/in/mateusfnogueira/" target="_blank" rel="noreferrer">
               Mateus Nogueira
             </a>
           </p>
-        </div>
+        </div> */}
       </footer>
       <OrderModal isOpen={isOpen} onClose={() => setIsOpen(false)} />
     </>

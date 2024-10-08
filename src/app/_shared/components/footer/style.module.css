@@ -5,6 +5,9 @@
   flex-direction: column;
   gap: 10px;
   left: auto;
-  bottom: 10px;
+  bottom: 0px;
+  padding-bottom: 10px;
+  padding-top: 8px;
   position: fixed;
+  background-color: rgba(100, 100, 100, 0.2);
 }

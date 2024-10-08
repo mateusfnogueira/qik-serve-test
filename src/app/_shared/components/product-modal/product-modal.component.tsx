@@ -53,18 +53,14 @@ export function ProductModal({ isOpen, product, onClose }: ProductModalProps) {
   return (
     <div className={style.overlay}>
       <div className={style.modal}>
-        <button className={style.close_button} onClick={onClose}>
-          X
-        </button>
-        {product.images ? (
-          <img className={style.product_img} src={product.images[0].image} alt={product.name} />
-        ) : (
-          <img
-            className={style.product_img}
-            src={'/imgs/not_image_available.jpg'}
-            alt={product.name}
-          />
-        )}
+        <div className={style.modal_header}>
+          <button className={style.close_button} onClick={onClose}>
+            X
+          </button>
+          {product.images ? (
+            <img className={style.product_img} src={product.images[0].image} alt={product.name} />
+          ) : null}
+        </div>
 
         <div className={style.product_info}>
           <h2>{product.name}</h2>
@@ -98,9 +94,7 @@ export function ProductModal({ isOpen, product, onClose }: ProductModalProps) {
               </label>
             ))}
           </div>
-        ) : (
-          <div className={style.size_options}></div>
-        )}
+        ) : null}
         <div className={style.div_control}>
           <QuantityControlComponent
             addItems={addItem}
