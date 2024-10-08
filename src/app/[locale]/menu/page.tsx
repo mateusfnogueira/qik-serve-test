@@ -4,23 +4,22 @@ import { ProductList } from '@/app/_shared/components/product-list/product-list.
 import { ProductModal } from '@/app/_shared/components/product-modal/product-modal.component'
 import { useProducts } from '@/app/_shared/hooks'
 import { IProduct } from '@/app/_shared/interfaces'
-import { useTranslations } from 'next-intl'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 import style from './style.module.css'
 import { OrderCardComponent } from '@/app/_shared/components/order-card/order-card.component'
 
 export default function MenuPage() {
-  const t = useTranslations('Menu')
+  const { products, categories, selectedCategory, setSelectedCategory } = useProducts()
 
-  const { products, categories, loading } = useProducts()
+  const [filteredProducts, setFilteredProducts] = useState<IProduct[]>(products)
 
   const [selectedProduct, setSelectedProduct] = useState<IProduct | undefined>()
   const [openModal, setOpenModal] = useState(false)
 
-  if (loading) {
-    return <main>{t('loading')}</main>
-  }
+  useEffect(() => {
+    setFilteredProducts(products)
+  }, [selectedCategory, products])
 
   function handleCloseModal() {
     setOpenModal(false)
@@ -35,12 +34,16 @@ export default function MenuPage() {
   return (
     <main className={style.main}>
       <section className={style.menu_section}>
-        <CategoryList categories={categories} />
+        <CategoryList
+          categories={categories}
+          selectedCategory={selectedCategory}
+          setSelectedCategory={setSelectedCategory}
+        />
         {categories.map((categorie, i) => (
           <ProductList
             key={i}
             categorie={categorie}
-            products={products}
+            products={filteredProducts.filter((product) => product.category === categorie.name)}
             setSelectedProduct={handleOpenModal}
           />
         ))}

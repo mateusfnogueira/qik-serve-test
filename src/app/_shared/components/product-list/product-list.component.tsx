@@ -1,5 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 
 import styles from './style.module.css'
 import { formatCurrency } from '../../utils/currency.util'
@@ -13,20 +13,12 @@ interface ProductListProps {
 
 export function ProductList({ categorie, products, setSelectedProduct }: ProductListProps) {
   const [isOpen, setIsOpen] = useState(true)
-  const [filteredProducts, setFilteredProducts] = useState<IProduct[]>([])
 
   const toggleAccordion = () => {
     setIsOpen(!isOpen)
   }
 
-  useEffect(() => {
-    const newProducts = products.filter((product) => product.category === categorie.name)
-
-    setFilteredProducts(newProducts)
-    console.log(products)
-  }, [products, categorie])
-
-  if (filteredProducts.length === 0) return null
+  if (products.length === 0) return null
 
   return (
     <div className={styles.accordion}>
@@ -36,7 +28,7 @@ export function ProductList({ categorie, products, setSelectedProduct }: Product
       </div>
 
       <div className={`${styles.accordion_content} ${isOpen ? styles.open : ''}`}>
-        {filteredProducts.map((product, i) => (
+        {products.map((product, i) => (
           <div key={i} className={styles.product_item} onClick={() => setSelectedProduct(product)}>
             <div className={styles.product_info}>
               <h3>{product.name}</h3>
