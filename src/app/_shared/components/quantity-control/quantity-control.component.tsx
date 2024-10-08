@@ -2,6 +2,7 @@ import style from './style.module.css'
 
 interface QuantityControlProps {
   quantity: number
+  prevDisabled?: boolean
   size?: 'small' | 'medium' | 'large'
   addItems: (quantity: number) => void
   removeItems: (quantity: number) => void
@@ -9,13 +10,16 @@ interface QuantityControlProps {
 
 export function QuantityControlComponent({
   quantity,
+  prevDisabled = false,
   size = 'medium',
   addItems,
   removeItems
 }: QuantityControlProps) {
   return (
     <div className={style.quantity_control}>
-      <button onClick={() => removeItems(quantity)}>-</button>
+      <button onClick={() => removeItems(quantity)} disabled={prevDisabled}>
+        -
+      </button>
       <span>{quantity}</span>
       <button onClick={() => addItems(quantity)}>+</button>
       <style jsx>{`

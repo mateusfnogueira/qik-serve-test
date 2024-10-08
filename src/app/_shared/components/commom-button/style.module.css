@@ -8,5 +8,12 @@
   text-align: center;
   border: none;
   cursor: pointer;
+
   border-radius: 40px;
+}
+
+.common_button:disabled {
+  background-color: #ccc;
+  color: #302f2f;
+  cursor: not-allowed;
 }

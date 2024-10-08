@@ -134,9 +134,14 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding-bottom: 40px;
 }
 
 @media (min-width: 768px) {
+  .overlay {
+    align-items: center;
+  }
+
   .modal {
     width: 393px;
     height: fit-content;

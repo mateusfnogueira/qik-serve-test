@@ -1,7 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import { useEffect, useState } from 'react'
 
-import styles from './product-list.module.css'
+import styles from './style.module.css'
 import { formatCurrency } from '../../utils/currency.util'
 import { IProduct, IProductCategory } from '../../interfaces/products.interface'
 

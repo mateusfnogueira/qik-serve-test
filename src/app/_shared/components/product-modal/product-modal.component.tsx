@@ -47,6 +47,7 @@ export function ProductModal({ isOpen, product, onClose }: ProductModalProps) {
       description: selectedSize?.name ?? ''
     }
     dispatch(addProduct(orderItem))
+    setSelectedSize(null)
     onClose()
   }
 
@@ -100,9 +101,10 @@ export function ProductModal({ isOpen, product, onClose }: ProductModalProps) {
             addItems={addItem}
             removeItems={removeItem}
             quantity={selectedQuantity}
+            prevDisabled={selectedQuantity === 1}
           />
 
-          <Button onClick={handleAddToCart}>
+          <Button onClick={handleAddToCart} disabled={Boolean(!selectedSize && product.modifiers)}>
             {t('Modal.add to cart').replace(
               '%price%',
               formatCurrency((selectedSize?.price ?? product.price) * selectedQuantity).toString()

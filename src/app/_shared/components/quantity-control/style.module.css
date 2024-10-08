@@ -23,3 +23,9 @@
   font-size: 18px;
   font-weight: bold;
 }
+
+.quantity_control button:disabled {
+  background-color: #ccc;
+  color: #302f2f;
+  cursor: not-allowed;
+}
