@@ -6,6 +6,8 @@ import style from './style.module.css'
 import { globalStore } from '../../../../stores/global.store'
 import { useDispatch } from 'react-redux'
 import { addProduct } from '../../../../features/product.slice'
+import { Button } from '../commom-button/common-button.component'
+import { useTranslations } from 'next-intl'
 
 interface ProductModalProps {
   isOpen: boolean
@@ -14,6 +16,7 @@ interface ProductModalProps {
 }
 
 export function ProductModal({ isOpen, product, onClose }: ProductModalProps) {
+  const t = useTranslations('Menu')
   const [selectedSize, setSelectedSize] = useState<IModifierItem | null>(null)
   const [selectedQuantity, setSelectedQuantity] = useState(1)
 
@@ -66,8 +69,13 @@ export function ProductModal({ isOpen, product, onClose }: ProductModalProps) {
         {product.modifiers ? (
           <div className={style.size_options}>
             <div className={style.options_description}>
-              <h3>{product.modifiers[0].name}</h3>
-              <p>Select {product.modifiers[0].maxChoices} option</p>
+              <h3>{t(`Modal.${product.modifiers[0].name.toLowerCase()}`)}</h3>
+              <p>
+                {t('Modal.max options').replace(
+                  '%max%',
+                  product.modifiers[0].maxChoices.toString()
+                )}
+              </p>
             </div>
             {product.modifiers[0].items.map((item, i) => (
               <label key={i}>
@@ -97,9 +105,12 @@ export function ProductModal({ isOpen, product, onClose }: ProductModalProps) {
             <button onClick={() => setSelectedQuantity((prev) => prev + 1)}>+</button>
           </div>
 
-          <button className={style.add_to_cart} onClick={handleAddToCart}>
-            Add to cart - R${(selectedSize?.price ?? product.price) * selectedQuantity}
-          </button>
+          <Button onClick={handleAddToCart}>
+            {t('Modal.add to cart').replace(
+              '%price%',
+              ((selectedSize?.price ?? product.price) * selectedQuantity).toString()
+            )}
+          </Button>
         </div>
       </div>
     </div>

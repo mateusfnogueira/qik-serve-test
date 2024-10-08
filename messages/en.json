@@ -20,10 +20,19 @@
       "burgers": "Burgers",
       "drinks": "Drinks",
       "desserts": "Desserts"
+    },
+    "Modal": {
+      "choose a size": "Choose the quantity",
+      "max options": "Select up to %max% options",
+      "add to cart": "Add to cart • %price%"
     }
   },
   "Cart": {
     "title": "Cart",
     "subtitle": "Your shopping cart"
+  },
+  "Footer": {
+    "text button": "Your Basket • %price%",
+    "description": "Developed by Mateus Nogueira"
   }
 }

@@ -152,19 +152,6 @@
   font-weight: bold;
 }
 
-.add_to_cart {
-  width: 345px;
-  padding: 16px;
-  align-self: center;
-  background-color: #4f372f;
-  color: #fff;
-  font-size: 18px;
-  text-align: center;
-  border: none;
-  cursor: pointer;
-  border-radius: 40px;
-}
-
 @media (min-width: 768px) {
   .modal {
     width: 393px;

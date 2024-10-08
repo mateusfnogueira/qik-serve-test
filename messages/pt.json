@@ -21,10 +21,19 @@
       "burgers": "Hambúrgueres",
       "drinks": "Bebidas",
       "desserts": "Sobremesas"
+    },
+    "Modal": {
+      "choose a size": "Escolha a quantidade",
+      "max options": "Selecione até %max% opções",
+      "add to cart": "Adicionar ao carrinho • %price%"
     }
   },
   "Cart": {
     "title": "Carrinho",
     "subtitle": "Seu carrinho de compras"
+  },
+  "Footer": {
+    "text button": "Seu Carrinho • %price%",
+    "description": "Desenvolvido por Mateus Nogueira"
   }
 }

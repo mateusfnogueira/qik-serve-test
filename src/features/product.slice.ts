@@ -34,7 +34,7 @@ const productSlice = createSlice({
       if (state.Order) {
         const filteredItems = state.Order.items.filter((item) => item.id !== action.payload)
         const newTotal = filteredItems.reduce(
-          (acc, item) => acc + item.itemPrice * item.quantity,
+          (acc, item) => acc - item.itemPrice * item.quantity,
           0
         )
         state.Order = {
