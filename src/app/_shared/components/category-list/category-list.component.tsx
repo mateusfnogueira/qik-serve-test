@@ -1,15 +1,15 @@
-import { useProducts } from "../../hooks";
-import { IProductCategory } from "../../interfaces/products.interface";
-import { CategoryListItem } from "./category-list-item.component";
+import { useProducts } from '../../hooks'
+import { IProductCategory } from '../../interfaces/products.interface'
+import { CategoryListItem } from './category-list-item.component'
 
-import style from "./category-list.module.css";
+import style from './style.module.css'
 
 interface CategoryListProps {
-  categories: IProductCategory[];
+  categories: IProductCategory[]
 }
 
 export function CategoryList({ categories }: CategoryListProps) {
-  const { selectedCategory, setSelectedCategory } = useProducts();
+  const { selectedCategory, setSelectedCategory } = useProducts()
 
   return (
     <div className={style.category_list}>
@@ -22,5 +22,5 @@ export function CategoryList({ categories }: CategoryListProps) {
         />
       ))}
     </div>
-  );
+  )
 }
