@@ -2,7 +2,7 @@
 import { useTranslations } from 'next-intl'
 import { IConfig, IProductCategory } from '../../interfaces'
 
-import style from './category-list.module.css'
+import style from './style.module.css'
 import Cookies from 'js-cookie'
 
 interface CategoryListProps {

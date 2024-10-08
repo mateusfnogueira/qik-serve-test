@@ -11,7 +11,8 @@
   "Header": {
     "home": "Home",
     "menu": "Menu",
-    "cart": "Cart"
+    "cart": "Cart",
+    "contact": "Contact"
   },
   "Menu": {
     "title": "Menu",

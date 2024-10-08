@@ -2,6 +2,7 @@
 import { usePathname } from 'next/navigation'
 import { useTranslations } from 'next-intl'
 import style from './style.module.css'
+import Link from 'next/link'
 
 export function Header({ backgroundColor }: { backgroundColor: string }) {
   const t = useTranslations('Header')
@@ -22,9 +23,27 @@ export function Header({ backgroundColor }: { backgroundColor: string }) {
 
   return (
     <header className={style.header} style={{ backgroundColor: backgroundColor }}>
-      <h1 className={style.title}>{t(`${getLastPathSegment(path)}`)}</h1>
-      <div className={style.icon}>
-        <button className={style.hamburger_menu}>&#9776;</button>
+      <div className={style.mobile}>
+        <h1 className={style.title}>{t(`${getLastPathSegment(path)}`)}</h1>
+        <div className={style.icon}>
+          <button className={style.hamburger_menu}>&#9776;</button>
+        </div>
+      </div>
+      <div className={style.desktop}>
+        <nav className={style.nav}>
+          <Link className={getLastPathSegment(path) === 'menu' ? style.active : ''} href="/pt/home">
+            {t('menu')}
+          </Link>
+          <Link className={getLastPathSegment(path) === 'cart' ? style.active : ''} href="/pt/menu">
+            {t('cart')}
+          </Link>
+          <Link
+            className={getLastPathSegment(path) === 'contact' ? style.active : ''}
+            href="/pt/contact"
+          >
+            {t('contact')}
+          </Link>
+        </nav>
       </div>
     </header>
   )
