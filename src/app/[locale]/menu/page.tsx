@@ -7,6 +7,9 @@ import { IProduct } from '@/app/_shared/interfaces'
 import { useTranslations } from 'next-intl'
 import { useState } from 'react'
 
+import style from './style.module.css'
+import { OrderCardComponent } from '@/app/_shared/components/order-card/order-card.component'
+
 export default function MenuPage() {
   const t = useTranslations('Menu')
 
@@ -30,16 +33,21 @@ export default function MenuPage() {
   }
 
   return (
-    <main>
-      <CategoryList categories={categories} />
-      {categories.map((categorie, i) => (
-        <ProductList
-          key={i}
-          categorie={categorie}
-          products={products}
-          setSelectedProduct={handleOpenModal}
-        />
-      ))}
+    <main className={style.main}>
+      <section className={style.menu_section}>
+        <CategoryList categories={categories} />
+        {categories.map((categorie, i) => (
+          <ProductList
+            key={i}
+            categorie={categorie}
+            products={products}
+            setSelectedProduct={handleOpenModal}
+          />
+        ))}
+      </section>
+      <section className={style.order_section}>
+        <OrderCardComponent />
+      </section>
       <ProductModal product={selectedProduct} isOpen={openModal} onClose={handleCloseModal} />
     </main>
   )

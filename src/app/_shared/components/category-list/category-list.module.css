@@ -3,11 +3,10 @@
   flex-wrap: wrap;
   justify-content: flex-start;
   gap: 16px;
-  padding: 24px 0px 20px 12px;
+  padding: 0px 0px 20px 12px;
 }
 
 .category_item {
-  width: 104px;
   height: 146px;
   display: flex;
   flex-direction: column;
@@ -25,7 +24,6 @@
   align-items: center;
   border: 2px solid transparent;
   box-sizing: border-box;
-  z-index: -1;
 }
 
 .category_img {

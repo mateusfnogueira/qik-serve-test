@@ -1,37 +1,41 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { IConfig } from '@/app/_shared/interfaces'
+import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
 interface ConfigState {
-  data: any | null;
-  loading: boolean;
-  error: string | null;
+  data?: IConfig
+  loading: boolean
+  error: string | null
 }
 
 const initialState: ConfigState = {
-  data: null,
+  data: undefined,
   loading: false,
-  error: null,
-};
+  error: null
+}
 
 const configSlice = createSlice({
-  name: "config",
+  name: 'config',
   initialState,
   reducers: {
     fetchConfigStart: (state) => {
-      state.loading = true;
-      state.error = null;
+      state.loading = true
+      state.error = null
     },
     fetchConfigSuccess: (state, action: PayloadAction<any>) => {
-      state.loading = false;
-      state.data = action.payload;
+      state.loading = false
+      state.data = action.payload
     },
     fetchConfigFailure: (state, action: PayloadAction<string>) => {
-      state.loading = false;
-      state.error = action.payload;
+      state.loading = false
+      state.error = action.payload
     },
-  },
-});
+    setConfig: (state, action: PayloadAction<IConfig>) => {
+      state.data = action.payload
+    }
+  }
+})
 
-export const { fetchConfigStart, fetchConfigSuccess, fetchConfigFailure } =
-  configSlice.actions;
+export const { fetchConfigStart, fetchConfigSuccess, fetchConfigFailure, setConfig } =
+  configSlice.actions
 
-export default configSlice.reducer;
+export default configSlice.reducer

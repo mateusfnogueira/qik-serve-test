@@ -6,5 +6,8 @@
 
 body {
   font-family: Roboto;
-  background-color: #f8f9fa;
+  background-color: #eeeeee;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }

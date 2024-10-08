@@ -30,8 +30,12 @@
     }
   },
   "Cart": {
-    "title": "Carrinho",
-    "subtitle": "Seu carrinho de compras"
+    "Basket": "Carrinho",
+    "subtitle": "Seu carrinho de compras",
+    "subtotal": "Sub total",
+    "empty": "Seu carrinho está vazio",
+    "total": "Total",
+    "checkout": "Comprar agora"
   },
   "Footer": {
     "text button": "Seu Carrinho • %price%",

@@ -6,6 +6,7 @@ import { Button } from '../commom-button/common-button.component'
 import style from './style.module.css'
 import { useTranslations } from 'next-intl'
 import { OrderModal } from '../order-modal/order-modal.component'
+import { formatCurrency } from '../../utils/currency.util'
 
 export function FooterComponent() {
   const t = useTranslations('Footer')
@@ -42,7 +43,7 @@ export function FooterComponent() {
     <>
       <footer className={style.footer}>
         <Button onClick={() => setIsOpen(true)}>
-          {t('text button').replace('%price%', order.total.toString())}
+          {t('text button').replace('%price%', formatCurrency(order.total.toString()))}
         </Button>
         <div className={style.disclaimer}>
           <p>

@@ -3,7 +3,6 @@
   width: fit-content;
   justify-content: center;
   align-items: center;
-  margin-top: 27px;
   padding-top: 8px;
   margin-bottom: 10px;
   gap: 16px;
@@ -21,7 +20,6 @@
 }
 
 .quantity_control span {
-  margin: 0 16px;
   font-size: 18px;
   font-weight: bold;
 }

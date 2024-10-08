@@ -77,3 +77,6 @@
   font-weight: bold;
   margin-top: 8px;
 }
+
+@media (min-width: 768px) {
+}
