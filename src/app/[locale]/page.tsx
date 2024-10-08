@@ -24,7 +24,7 @@ export default function HomePage({ params }: { params: { locale: string } }) {
     const value = Cookies.get('siteConfig')
     setSiteConfig(value ? JSON.parse(value) : config)
     dispatch(setConfig(value ? JSON.parse(value) : config))
-  }, [])
+  }, [config, dispatch])
 
   if (!siteConfig) {
     return <main>{t('loading')}</main>
