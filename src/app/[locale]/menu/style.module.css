@@ -1,5 +1,7 @@
 .main {
   max-width: 1071px;
+  display: flex;
+  flex-direction: column;
   background-color: #f8f9fa;
   margin-top: 12px;
 }
@@ -13,10 +15,15 @@
 
 @media (min-width: 768px) {
   .main {
-    display: flex;
     padding: 32px;
     gap: 24px;
   }
+
+  .row {
+    display: flex;
+    gap: 24px;
+  }
+
   .menu_section {
     width: 600px;
   }
