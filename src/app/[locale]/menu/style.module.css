@@ -4,6 +4,7 @@
   flex-direction: column;
   background-color: #f8f9fa;
   margin-top: 12px;
+  padding-inline: 4px;
 }
 
 .menu_section {
