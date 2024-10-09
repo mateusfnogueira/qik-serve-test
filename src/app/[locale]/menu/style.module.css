@@ -1,5 +1,4 @@
 .main {
-  max-width: 1071px;
   display: flex;
   flex-direction: column;
   background-color: #f8f9fa;
@@ -26,6 +25,6 @@
   }
 
   .menu_section {
-    width: 600px;
+    max-width: 600px;
   }
 }
