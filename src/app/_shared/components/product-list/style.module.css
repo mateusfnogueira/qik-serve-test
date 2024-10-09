@@ -41,6 +41,7 @@
   justify-content: space-between;
   padding: 16px;
   border-bottom: 1px solid #ddd;
+  cursor: pointer;
 }
 
 .product_item:last-child {
@@ -58,6 +59,21 @@
 .product_info {
   display: flex;
   flex-direction: column;
+}
+
+.div_title {
+  display: flex;
+  justify-content: flex-start;
+  gap: 4px;
+}
+
+.counter {
+  background-color: #4f372f;
+  padding: 1px 4px;
+  border-radius: 4px;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 500;
 }
 
 .product_info h3 {
@@ -79,4 +95,7 @@
 }
 
 @media (min-width: 768px) {
+  .counter {
+    display: none;
+  }
 }

@@ -2,8 +2,8 @@
 import { useState } from 'react'
 
 import styles from './style.module.css'
-import { formatCurrency } from '../../utils/currency.util'
 import { IProduct, IProductCategory } from '../../interfaces/products.interface'
+import { ProductListItemComponent } from './product-list-item.component'
 
 interface ProductListProps {
   categorie: IProductCategory
@@ -29,20 +29,11 @@ export function ProductList({ categorie, products, setSelectedProduct }: Product
 
       <div className={`${styles.accordion_content} ${isOpen ? styles.open : ''}`}>
         {products.map((product, i) => (
-          <div key={i} className={styles.product_item} onClick={() => setSelectedProduct(product)}>
-            <div className={styles.product_info}>
-              <h3>{product.name}</h3>
-              <p>{product.description}</p>
-              <p className={styles.price}>{formatCurrency(product.price)}</p>
-            </div>
-            {product.images ? (
-              <img
-                className={styles.product_img}
-                src={product.images[0].image}
-                alt={product.name}
-              />
-            ) : null}
-          </div>
+          <ProductListItemComponent
+            key={i}
+            product={product}
+            setSelectedProduct={setSelectedProduct}
+          />
         ))}
       </div>
     </div>
