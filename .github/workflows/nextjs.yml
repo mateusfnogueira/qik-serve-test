@@ -3,7 +3,7 @@ name: Deploy Next.js site to Pages
 on:
   push:
     branches:
-      - master
+      - gh-pages
 
 jobs:
   build:
