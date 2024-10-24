@@ -2,9 +2,9 @@
 const nextIntl = require('next-intl/plugin')()
 const nextConfig = nextIntl({
   basePath: '/qik-serve-test',
-  output: 'export',
   reactStrictMode: true,
   images: {
+    unoptimized: true,
     domains: ['preodemo.gumlet.io']
   }
 })
