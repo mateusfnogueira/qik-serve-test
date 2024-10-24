@@ -28,7 +28,4 @@ jobs:
         run: npm run export
 
       - name: Deploy to GitHub Pages
-        uses: actions/deploy-pages@v3
-        with:
-          branch: gh-pages
-          folder: out
+        run: npx gh-pages -d out
