@@ -1,6 +1,6 @@
 {
   "LocaleLayout": {
-    "title": "React i18n",
+    "title": "Burger Store",
     "description": "Desenvolvido por Mateus Nogueira"
   },
   "Header": {
@@ -37,6 +37,9 @@
     "empty": "Seu carrinho está vazio",
     "total": "Total",
     "checkout": "Comprar agora"
+  },
+  "Contact": {
+    "title": "Contato"
   },
   "Footer": {
     "text button": "Seu Carrinho • %price%",

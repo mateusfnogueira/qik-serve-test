@@ -1,6 +1,6 @@
 {
   "LocaleLayout": {
-    "title": "React i18n",
+    "title": "Burger Store",
     "description": "Developed by Mateus Nogueira"
   },
   "Home": {
@@ -36,6 +36,9 @@
     "empty": "Your basket is empty",
     "total": "Total",
     "checkout": "Checkout now"
+  },
+  "Contact": {
+    "title": "Contact"
   },
   "Footer": {
     "text button": "Your Basket • %price%",

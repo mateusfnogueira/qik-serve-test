@@ -31,10 +31,10 @@ export function Header({ backgroundColor }: { backgroundColor: string }) {
       </div>
       <div className={style.desktop}>
         <nav className={style.nav}>
-          <Link className={getLastPathSegment(path) === 'menu' ? style.active : ''} href="/pt/home">
+          <Link className={getLastPathSegment(path) === 'menu' ? style.active : ''} href="/pt/menu">
             {t('menu')}
           </Link>
-          <Link className={getLastPathSegment(path) === 'cart' ? style.active : ''} href="/pt/menu">
+          <Link className={getLastPathSegment(path) === 'cart' ? style.active : ''} href="/pt/cart">
             {t('cart')}
           </Link>
           <Link
