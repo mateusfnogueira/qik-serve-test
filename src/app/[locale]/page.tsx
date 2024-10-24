@@ -1,4 +1,6 @@
 'use client'
+export const dynamic = 'force-dynamic'
+
 import Cookies from 'js-cookie'
 import { useTranslations } from 'next-intl'
 import { IConfig } from '../_shared/interfaces/config.interface'

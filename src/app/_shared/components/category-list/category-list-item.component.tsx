@@ -1,4 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
+export const dynamic = 'force-dynamic'
+
 import { useTranslations } from 'next-intl'
 import { IConfig, IProductCategory } from '../../interfaces'
 

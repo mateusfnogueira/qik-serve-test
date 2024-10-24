@@ -7,11 +7,6 @@ export function useProducts() {
   const [selectedCategory, setSelectedCategory] = useState<string | undefined>()
   const [loading, setLoading] = useState(false)
 
-  function filterProductsByCategory(data: IProductCategory[], categorie?: string) {
-    if (!categorie) return data
-    return [data?.find((section) => section.name === categorie)]
-  }
-
   useEffect(() => {
     const fetchProducts = async () => {
       setLoading(true)
