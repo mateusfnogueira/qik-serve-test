@@ -1,6 +1,6 @@
 import { useTranslations } from 'next-intl'
 
-export default function ContactPag() {
+export default function ContactPage() {
   const t = useTranslations('Contact')
   return (
     <div>

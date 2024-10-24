@@ -7,7 +7,7 @@ export default function CartPage() {
 
   return (
     <main>
-      <p>{t('title')}</p>
+      <p>{t('Basket')}</p>
     </main>
   )
 }
